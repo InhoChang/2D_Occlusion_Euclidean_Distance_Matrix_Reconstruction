@@ -37,8 +37,11 @@ img/
 ```
 
 each sparse EDM (zeros_1, zeros_2, zeros_3) has 
+
  tr_img : 1,247,800
+ 
  dev_img : 311,950
+ 
  tt_img : 548,818
 
 
