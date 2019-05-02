@@ -48,7 +48,7 @@ train and reconstruct occlusion edm using simple Fully Convolutional Network(FCN
 
 
 model specifics:
-'''
+```
 Conv - BN - Relu - Max_Pooling - Dropout x 2 
 
 Deconv - BN - Relu - Dropout
@@ -56,7 +56,7 @@ Deconv - BN - Relu - Dropout
 Deconv - BN - Relu - Conv 1x1 - Relu 
 
 L2_loss
-'''
+```
 
 train settings are in params.json
 which below in 
