@@ -1,0 +1,16 @@
+{
+    "learning_rate": 1e-3,
+    "batch_size": 200,
+    "num_epochs": 15,
+
+    "num_channels": 64,
+    "use_batch_norm": true,
+    "bn_momentum": 0.9,
+
+    "image_size": 16,
+    "use_random_flip": true,
+    "num_labels": 16,
+
+    "num_parallel_calls": 4,
+    "save_summary_steps": 1
+}
