@@ -17,7 +17,9 @@ so match both values range between [0 1] using min_max normalization.
 
 ### 1. save_img.py 
 To make sparse(occlusion) EDM, randomly select joint numbers and make EDM value as zero. (num_zeros = 1, 2, 3) 
+
 After making sparse(occlusion) EDM, save as Image file (.png) in below directory.  
+
 image size is 16x16. label is original EDM without sparse(occlusion). 
 
 ```
