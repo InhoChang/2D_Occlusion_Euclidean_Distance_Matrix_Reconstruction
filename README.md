@@ -1,12 +1,13 @@
 # 2D_Occlusion_Euclidean_Distance_Matrix_Reconstruction
 Occlusion reconstruction using simple fully convolution layer network 
-with 2d euclidean distance matrix(edm) for human pose estimation.
-This code is starting from making occluded edm and reconstruct edm, so you have to prepare EDM dataset from human3.6m using 2d joint coordinates. 
+with 2d Euclidean Distance Matrix(EDM) for human pose estimation.
+This code is starting from making occluded EDM and then reconstruct EDM, so you have to prepare EDM dataset from human3.6m using 2d joint coordinates. 
 
-# Update 19.05.10
+## Update 19.05.10
 apply min_max normalization to logits. 
 previous logit values range was [-2 8]. However, the ground turth(label) was [0 1]. 
 so match both values range between [0 1] using min_max normalization.
+
 
 ### Requirments 
 - python 3.6 
@@ -20,7 +21,7 @@ To make sparse(occlusion) EDM, randomly select joint numbers and make EDM value 
 
 After making sparse(occlusion) EDM, save as Image file (.png) in below directory.  
 
-image size is 16x16. label is original EDM without sparse(occlusion). 
+Image size is 16x16. label is original EDM without sparse(occlusion). 
 
 ```
 img/ 
@@ -31,10 +32,8 @@ img/
         ...
      label/ 
         zeros_1_label_0
-        ...
-           
-  
-  
+        ...     
+    
    zeros_2/ zeros_3/ 
     tr/ dev/ tt/ 
       img/
