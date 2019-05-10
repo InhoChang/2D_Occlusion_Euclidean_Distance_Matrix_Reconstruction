@@ -19,6 +19,8 @@ parser.add_argument('--restore_from', default=None)
 # train_subjects = [1, 5, 6, 7, 8]  # [1,5,6,7,8]
 # test_subjects = [9, 11] # [9,11]
 n_zeros = 1  # 1, 2, 3
+set_num_data = -1 # 400, 600, -1(all)
+
 
 
 if __name__ == '__main__':
@@ -38,11 +40,11 @@ if __name__ == '__main__':
     train_data_dir = os.path.join(data_dir,'zeros_{}'.format(n_zeros),'tr')
     dev_data_dir = os.path.join(data_dir,'zeros_{}'.format(n_zeros),'dev')
 
-    train_filenames = [os.path.join(train_data_dir, 'img', f) for f in os.listdir(train_data_dir+'\\'+'img')]
-    eval_filenames = [os.path.join(dev_data_dir, 'img', f) for f in os.listdir(dev_data_dir+'\\'+'img')]
+    train_filenames = [os.path.join(train_data_dir, 'img', f) for f in os.listdir(train_data_dir+'\\'+'img')[:set_num_data]]
+    eval_filenames = [os.path.join(dev_data_dir, 'img', f) for f in os.listdir(dev_data_dir+'\\'+'img')[:set_num_data]]
 
-    train_labels = [os.path.join(train_data_dir, 'label', f) for f in os.listdir(train_data_dir+'\\'+'label')]
-    eval_labels = [os.path.join(dev_data_dir, 'label', f) for f in os.listdir(dev_data_dir+'\\'+'label')]
+    train_labels = [os.path.join(train_data_dir, 'label', f) for f in os.listdir(train_data_dir+'\\'+'label')[:set_num_data]]
+    eval_labels = [os.path.join(dev_data_dir, 'label', f) for f in os.listdir(dev_data_dir+'\\'+'label')[:set_num_data]]
 
     assert len(train_labels) == len(train_filenames)  and len(eval_filenames) == len(eval_labels)
 
