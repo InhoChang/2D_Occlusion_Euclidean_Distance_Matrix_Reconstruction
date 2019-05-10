@@ -1,12 +1,19 @@
-# Occlusion_EDM_2D_Reconstruction
-occlusion reconstruction using 2d edm for human pose estimation. 
+# 2D_Occlusion_Euclidean_Distance_Matrix_Reconstruction
+Occlusion reconstruction using simple fully convolution layer network 
+with 2d euclidean distance matrix(edm) for human pose estimation.
+This code is starting from making occluded edm and reconstruct edm, so you have to prepare EDM dataset from human3.6m using 2d joint coordinates. 
 
+# Update 19.05.10
+apply min_max normalization to logits. 
+previous logit values range was [-2 8]. However, the ground turth(label) was [0 1]. 
+so match both values range between [0 1] using min_max normalization.
 
 ### Requirments 
 - python 3.6 
 - tensorflow-gpu 1.11 
 - h5py 
 - PIL 
+
 
 ### 1. save_img.py 
 To make sparse(occlusion) EDM, randomly select joint numbers and make EDM value as zero. (num_zeros = 1, 2, 3) 
