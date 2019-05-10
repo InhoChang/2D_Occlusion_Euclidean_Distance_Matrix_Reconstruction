@@ -63,6 +63,15 @@ def build_model(is_training, inputs, params):
 
 
 
+def min_max_normalization(logit):
+
+    logit_min = tf.reduce_min(logit, 0)
+    logit_max = tf.reduce_max(logit, 0)
+    normalized_logits = (logit - logit_min) / tf.maximum( (logit_max - logit_min),  2 * 1e-6)
+
+    return normalized_logits
+
+
 
 def model_fn(mode, inputs, params, reuse=False):
     """Model function defining the graph operations.
@@ -90,7 +99,12 @@ def model_fn(mode, inputs, params, reuse=False):
     with tf.variable_scope('model', reuse=reuse):
         # Compute the output distribution of the model and the predictions
         logits = build_model(is_training, inputs, params)
-        predictions =logits
+        predictions = min_max_normalization(logits)
+        
+        # To check occluded input, ground truth, and logit(prediction) img in tensorboard  
+        tf.summary.image('occulsion_img', inputs['edm'], max_outputs=1)
+        tf.summary.image('label_img', labels, max_outputs=1)
+        tf.summary.image('predicted_img', predictions, max_outputs=1)
 
     # Define L2- loss and accuracy
     loss = tf.losses.mean_squared_error(labels = labels, predictions=predictions)
